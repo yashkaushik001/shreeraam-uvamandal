@@ -1,6 +1,6 @@
 // 🌸 Falling Flowers
 const flowerEmojis = ["🌸", "🌺", "🌼", "🌻", "🌷"];
-const fallDuration = 60; // 🌺 flowers fall time (seconds) — change here
+const fallDuration = 60; // 🌺 flowers fall time (seconds)
 const flowerInterval = 250;
 
 function createFlower() {
@@ -30,21 +30,23 @@ function addUpdate() {
     input.value = "";
   }
 }
+
 // 🎶 Automatic Song Play + Fallback
 window.addEventListener("load", () => {
   const audio = document.getElementById("mandirSong");
-  const playButton = document.getElementById("playButton");
+  const startButton = document.getElementById("startMusic");
 
-  audio.volume = 80; // volume thoda kam rakha hai
+  audio.volume = 0.8; // volume thoda kam rakha hai
   audio.play().then(() => {
     console.log("Audio autoplay success");
+    startButton.style.display = "none";
   }).catch(() => {
     // agar autoplay blocked hua to button dikhaye
-    playButton.style.display = "inline-block";
+    startButton.style.display = "block";
   });
 
-  playButton.addEventListener("click", () => {
+  startButton.addEventListener("click", () => {
     audio.play();
-    playButton.style.display = "none";
+    startButton.style.display = "none";
   });
 });
